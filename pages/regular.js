@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import Link from 'next/link'
 
 class Regular extends Component {
   constructor (props) {
@@ -8,6 +9,9 @@ class Regular extends Component {
     return (
       <div>
         <p>Regular React Component.</p>
+        <Link href="/">
+          <button>Index page</button>
+        </Link>
       </div>
     )
   }
