@@ -1,0 +1,17 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "Todo app to show the features of next.js",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ing. Jose Manuel Santibañez Villanueva",
+  "license": "ISC",
+  "dependencies": {
+    "next": "^2.4.9",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
