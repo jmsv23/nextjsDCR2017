@@ -1,17 +1,26 @@
 import Link from 'next/link'
 
-const linkStyles = {
-  marginLeft: 20,
-}
+const headerStyles = `
+  .header {
+    background: gray;
+    width: 100%;
+  }
+  .header a {
+    display: inline-block;
+    color: white;
+    margin: 10px;
+  }
+`
 
 const Header = () => (
-  <div>
+  <div className="header">
     <Link href="/">
-      <a style={linkStyles}>Home</a>
+      <a>Home</a>
     </Link>
     <Link href="/about">
-      <a style={linkStyles}>About</a>
+      <a>About</a>
     </Link>
+    <style>{headerStyles}</style>
   </div>
 )
 
