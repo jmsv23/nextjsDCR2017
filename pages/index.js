@@ -1,11 +1,10 @@
 import Link from 'next/link'
+import Header from '../components/header'
 
 const Index = () => (
   <div>
-    <p>Hello World</p>
-    <Link href="/regular">
-      <a>Regular component</a>
-    </Link>
+    <Header />
+    <p>Home Page</p>
   </div>
 )
 
