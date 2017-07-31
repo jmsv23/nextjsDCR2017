@@ -61,7 +61,7 @@ class Index extends Component {
     const gifs = this.state.gifs
     return gifs.map((item) => {
       return (
-        <Link key={item.id} href={`/detail?id=${item.id}&back=${searchKey}`}>
+        <Link key={item.id} as={`/detail/${searchKey}/${item.id}`} href={`/detail?id=${item.id}&back=${searchKey}`}>
           <a>
             <img key={item.id} src={item.images.fixed_width.url} />
           </a>
