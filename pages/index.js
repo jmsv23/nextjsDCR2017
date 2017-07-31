@@ -1,5 +1,6 @@
 import react, {Component} from 'react'
 import axios from 'axios'
+import Link from 'next/link'
 import Layout from '../components/layout'
 
 
@@ -7,7 +8,7 @@ class Index extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      searchKey: 'cats',
+      searchKey: (typeof props.url.query.searchKey !== 'undefined' ? props.url.query.searchKey : 'cats'),
       gifs: props.gifs
     }
   }
@@ -41,7 +42,7 @@ class Index extends Component {
 
   search = () => {
     const searchKey = this.state.searchKey
-    const url = `https://api.giphy.com/v1/gifs/search?limit=20&q=${searchKey}&api_key=dc6zaTOxFJmzC`
+    const url = `https://api.giphy.com/v1/gifs/search?limit=5&q=${searchKey}&api_key=dc6zaTOxFJmzC`
     axios.get(url)
     .then((response) => {
       this.setState({
@@ -56,15 +57,22 @@ class Index extends Component {
   }
 
   renderItems = () => {
+    const searchKey = this.state.searchKey
     const gifs = this.state.gifs
     return gifs.map((item) => {
-      return (<img key={item.id} src={item.images.fixed_width.url} />)
+      return (
+        <Link key={item.id} href={`/detail?id=${item.id}&back=${searchKey}`}>
+          <a>
+            <img key={item.id} src={item.images.fixed_width.url} />
+          </a>
+        </Link>)
     })
   }
 }
 
-Index.getInitialProps = async function() {
-  const url = `https://api.giphy.com/v1/gifs/search?limit=20&q=cats&api_key=dc6zaTOxFJmzC`
+Index.getInitialProps = async (context) => {
+  const searchKey = (typeof context.query.searchKey !== 'undefined' ? context.query.searchKey : 'cats')
+  const url = `https://api.giphy.com/v1/gifs/search?limit=5&q=${searchKey}&api_key=dc6zaTOxFJmzC`
   const gifs = await axios.get(url)
   .then((response) => {
     return response.data.data
@@ -72,7 +80,6 @@ Index.getInitialProps = async function() {
   .catch((err) => {
     return []
   })
-
 
   return {
     gifs: gifs

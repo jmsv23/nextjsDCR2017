@@ -13,7 +13,6 @@ export default class MyDocument extends Document {
      <html>
        <Head>
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
        </Head>
        <body className="custom_class">
          {this.props.customValue}
